@@ -2,8 +2,8 @@ import React from "react";
 
 function Dashboard(){
   return(
-    <div>
-      <h1>Bravo vous êtes inscrit</h1>
+    <div className="Dashboard">
+      <h1>Bravo {localStorage.getItem('user')} vous êtes inscrit !</h1>
     </div>
   )
 }

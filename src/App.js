@@ -12,7 +12,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Router>
         <div>
           <Switch>

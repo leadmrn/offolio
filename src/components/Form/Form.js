@@ -10,24 +10,34 @@ function FormSignUp(){
 
   const onSubmit = (data)=>{
     data.password === data.checkPassword && data.checkbox === true  ?
-      setSignUp(true)
-    : data.password !== data.checkPassword ? setError('Les mots de passe sont différents') : setError('Veuillez valider les termes contractuels');
+      isSignUp(data)
+    :
+      data.password !== data.checkPassword ? setError('Les mots de passe sont différents') : setError('Veuillez valider les termes contractuels')
+  }
+
+  const isSignUp = (data)=>{
+    const user = data.email.split("@")[0];
+    localStorage.setItem('user', user);
+    document.querySelector('.FormSignIn').classList.add('disappear');
+    setTimeout(()=>{
+      setSignUp(true);
+    }, 1500);
   }
 
   return(
     <div className="FormSignIn">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
-          <label className="form-label" htmlFor="email">Identifiant</label>
-          <input className="form-control" type="email" placeholder="Email" id="email" {...register('email')} />
+          <label className="form-label" htmlFor="email">Identifiant (email)</label>
+          <input className="form-control" type="email" id="email" {...register('email')} />
         </div>
         <div className="mb-3">
           <label className="form-label" htmlFor="password">Mot de passe</label>
-          <input className="form-control" type="password" placeholder="Mot de passe" id="password" {...register('password')} />
+          <input className="form-control" type="password" id="password" {...register('password')} />
         </div>
         <div className="mb-3">
           <label className="form-label" htmlFor="checkPassword">Confirmer le mot de passe</label>
-          <input className="form-control" type="password" placeholder="Confirmer le mot de passe" id="checkPassword" {...register('checkPassword')} />
+          <input className="form-control" type="password" id="checkPassword" {...register('checkPassword')} />
         </div>
         <div className="mb-3 form-check">
           <input className="form-check-input" type="checkbox" id="checkbox" {...register('checkbox')} />

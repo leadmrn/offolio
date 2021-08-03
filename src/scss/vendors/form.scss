@@ -1,6 +1,10 @@
 .FormSignIn{
-  max-width: 500px;
+  width: 500px;
   padding: 30px;
   border: 1px solid lightgray;
-  border-radius: 30px;
+  background: #FFF;
+  animation: appear 1.5s;
+  &.disappear{
+    animation: disappear 1.5s;
+  }
 }

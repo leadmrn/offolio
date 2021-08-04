@@ -4,7 +4,18 @@
   border: 1px solid lightgray;
   background: #FFF;
   animation: appear 1.5s;
+  transition: all .5s;
   &.disappear{
     animation: disappear 1.5s;
+  }
+
+  form > div, form > button{
+    opacity: 0;
+    animation: appearContent .7s forwards 2s;
+  }
+
+  .alert{
+    margin-bottom: 0;
+    animation: appearContent .7s forwards;
   }
 }

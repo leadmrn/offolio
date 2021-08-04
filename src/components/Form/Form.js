@@ -9,10 +9,10 @@ function FormSignUp(){
   const [signUp, setSignUp] = useState(false);
 
   const onSubmit = (data)=>{
-    data.password === data.checkPassword && data.checkbox === true  ?
+    data.password === data.checkPassword ?
       isSignUp(data)
     :
-      data.password !== data.checkPassword ? setError('Les mots de passe sont différents') : setError('Veuillez valider les termes contractuels')
+      setError('Les mots de passe sont différents, veuillez réessayer.')
   }
 
   const isSignUp = (data)=>{
@@ -29,18 +29,18 @@ function FormSignUp(){
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
           <label className="form-label" htmlFor="email">Identifiant (email)</label>
-          <input className="form-control" type="email" id="email" {...register('email')} />
+          <input className="form-control" type="email" id="email" required {...register('email')} />
         </div>
         <div className="mb-3">
           <label className="form-label" htmlFor="password">Mot de passe</label>
-          <input className="form-control" type="password" id="password" {...register('password')} />
+          <input className="form-control" type="password" id="password" required {...register('password')} />
         </div>
         <div className="mb-3">
           <label className="form-label" htmlFor="checkPassword">Confirmer le mot de passe</label>
-          <input className="form-control" type="password" id="checkPassword" {...register('checkPassword')} />
+          <input className="form-control" type="password" id="checkPassword" required {...register('checkPassword')} />
         </div>
         <div className="mb-3 form-check">
-          <input className="form-check-input" type="checkbox" id="checkbox" {...register('checkbox')} />
+          <input className="form-check-input" type="checkbox" id="checkbox" required {...register('checkbox')} />
           <label className="form-check-label" htmlFor="checkbox">Je valide les termes contractuels</label>
         </div>
         <button className="btn btn-primary" type="submit">S'inscrire</button>
